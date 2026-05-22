@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etapa 2-Git: git log, git clone, .gitignore</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Etapa 2: git log, git clone, .gitignore</h1>
+      </header>
+      <main>
+        <section>
+          <h2>¿Qué hace <em>git log</em>?</h2>
+          <p>
+            <em>git log</em> es el comando que te muestra el <strong>historial completo de
+              commits</strong> de tu repositorio. Es como abrir el libro de registros donde quedó
+            grabado todo lo que pasó en el proyecto desde el principio.
+          </p>
+          <p>Cuando se ejecuta dicho comando <em>Git</em> responde con una lista de todos los
+            <em>commits</em> en orden del más reciente al más antiguo.</p>
+          <article>
+            <h3>¿Qué información muestra cada <em>commit</em>?</h3>
+            <p>Cada <em>commit</em> en el historial muestra 4 datos:</p>
+            <p>
+              <strong>1. Hash</strong> <br>
+              <span class="code">commit fa6ce35b2d1234abcd...</span>
+            </p>
+            <p>El código único que identifica ese commit. Cuando haces un commit aprece unos numeros
+              al costado ese es el <em>hash</em>.</p>
+            <p>
+              <strong>2. Autor</strong> <br>
+              <span class="code">autor: ¿Quién-hizo-el-commit? < correo que se configuro al inicio>
+              </span>
+            </p>
+            <p>
+              <strong>3. Fecha</strong> <br>
+              <span class="code">Date: Fri May 16 15:10:00 2026</span> <br> Cuándo se hizo el
+              <em>commit.</em>
+            </p>
+            <p>
+              <strong>4. Mensaje</strong> <br>
+              <span class="code">El mensaje que se escribio cuando se hizo el commit.</span>
+            </p>
+          </article>
+          <article>
+            <h3>¿Por qué es importante <em>git log</em>?</h3>
+            <p>Porque te permite ver toda la historial del proyecto, entender qué cambió en cada
+              momento, quién lo cambio y por qué. En equipos de trabajo es fundamental para saber
+              qué hizo cada persona.</p>
+          </article>
+          <article>
+            <h3>Sus formas de uso</h3>
+            <p>
+              <strong>Forma completa</strong> - muestra todos los detalles: <br>
+              <span class="code">git log</span>
+            </p>
+            <p>
+              <strong>Forma resumida</strong> - muestra solo el <em>hash</em> corto y el mensaje,
+              más fácil de leer: <br>
+              <span class="code">git log --oneline</span> <br> Esta es la forma más usada en el día
+              a día porque es más limpia y rápida de leer.
+            </p>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
