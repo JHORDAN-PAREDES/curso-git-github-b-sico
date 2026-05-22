@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git - Github</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      header {
+        border-bottom: medium solid black;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.5rem;
+      }
+
+      ol,
+      p {
+        font-size: 1.3rem;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      hr {
+        border: medium solid #000;
+        margin-top: 2rem;
+      }
+
+      .container {
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .image {
+        width: 100%;
+        background-color: #f1f1f1;
+        border: medium solid #343434;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .image img {
+        width: 100%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Git - Github</h1>
+      </header>
+      <main>
+        <section>
+          <h2>Los comandos fundamentales de Git</h2>
+          <ol>
+            <li><strong>git init</strong> (<em>Inicializar un repositorio</em>) - Convierte una
+              carpeta en un proyecto <em>Git.</em>
+            </li>
+            <li><strong>git status</strong> (<em>Ver el estado de tus archivos</em>) - te dice que
+              archivos cambiaron. </li>
+            <li><strong>git add</strong> (<em>Agregar archivos al stage</em>) - Preparas los
+              archivos para guardarlo.</li>
+            <li><strong>git commit</strong> (<em>Guardar los cambios</em>) - Creas un punto de
+              guardado en el historial. </li>
+            <li><strong>git push</strong> (<em>Subir a GitHUb</em>) - Envias tu trabajo a
+              <em>GitHub</em></li>
+            <li><strong>git pull</strong> (<em>Bajar cambios</em>) - Traes cambios desde
+              <em>GitHub</em></li>
+          </ol>
+          <p>Estos 6 comandos son el <em>flujo de trabajo</em> diario de cualquier desarrollador.
+          </p>
+        </section>
+        <hr>
+        <section>
+          <h2>¿Qué es un repositorio?</h2>
+          <p>Antes de entender que es <em>git init</em> necesitamos entender que es un
+            <em>repositorio.</em></p>
+          <p>Un <em>repostiorio (o "repo")</em> es simplemente una carpeta de tu computadora que
+            <em>Git</em> está <em>Vigilando</em> y <em>rastreando.</em> <em>Git</em> observa cada
+            cambio que haces dentro de ella - qué archivos creaste, modificaste o eliminaste, y
+            cuándo. </p>
+          <p><b>Piensalo así:</b> es como una carpeta normal, pero con una memoria fotográfica de
+            todo lo que ha pasado dentro de ella desde el principio.</p>
+        </section>
+        <hr>
+        <section>
+          <h2>1. ¿Qué hace <em>git init</em>?</h2>
+          <p> Cuando escribes <em>git init</em> dentro de una carpeta, le estas diciendo a
+            <em>Git</em>: <br>
+            <em><small>"Empieza a vigilar esta carpeta desde ahora."</small></em>
+          </p>
+          <p><em>Git</em> crea una carpeta oculta llamada <em>.git</em> dentro de tu proyecto. Esa
+            carpeta es donde <em>Git</em> guarda todo el historial, los registros y la configuración
+            del repositorio. Tú nunca la tocas directamente, <em>Git</em> la maneja solo. </p>
+          <article>
+            <h3>¿Por qué existe <em>git init</em>?</h3>
+            <p>Porque no todas las carpetas de tu computadora necesitan ser rastreadas por
+              <em>Git</em>. Solo las que tú decides convertir en un <em>repositorio.</em> <em>git
+                init</em> es ese momento de decisión.</p>
+            <div class="image">
+              <img src="./assets/image/git-init.png" alt="el comando git init de git">
+            </div>
+          </article>
+        </section>
+        <hr>
+        <section>
+          <h2>2. ¿Qué es <em>git status</em>?</h2>
+          <p>
+            <em>git status</em> es como preguntarle a <em>Git:</em> <br>
+            <em><small>"¿Qué esta pasando en este momento dentro del repositorio."</small></em>
+          </p>
+          <p><em>Git</em> te responde mostrándote el estado actual de tus archivos. Es una foto del
+            momento - qué cambió. qué está listo para guardarse y qué <em>Git</em> aún no conoce.
+          </p>
+          <article>
+            <h3>Los 3 estados en los que puede estar un archivo</h3>
+            <p>Este es el concepto más importante de <em>Git</em>, todo gira alrededor de esto:</p>
+            <ol>
+              <li><strong>Untracked</strong>(sin rastrear): Son archivos nuevos que <em>Git</em>
+                nunca ha visto antes. Existen en tu carpeta pero <em>Git</em> los ignora
+                completamente porque nunca le has dicho que los vigile. </li>
+              <li><strong>Modified</strong>(modificado): Son archivos que <em>Git</em> ya conocía,
+                pero que tú cambiaste desde el último guardado. <em>Git</em> los detecta pero aún no
+                ha guardado esos cambios.</li>
+              <li><strong>Staged</strong> (en escena/preparado): Son archivos que ya le diste a
+                <em>Git</em>
+                <small>"estos cambios sí quiero guardarlos"</small>. Están listos y esperando ser
+                guardados oficialmente con un <em>commit.</em>
+              </li>
+            </ol>
+          </article>
+          <article>
+            <h3>La analogía perfecta</h3>
+            <p>Imagina que estás empacando una maleta para viajar:</p>
+            <ul>
+              <li><strong>Untracked</strong> → ropa tirada por el cuarto que aún no decidiste si
+                llevar.</li>
+              <li><strong>Modified</strong> → ropa que ya habias metido antes pero la sacaste para
+                cambiarla. </li>
+              <li><strong>Staged</strong> → ropa que ya metiste en la maleta y está lista para
+                cerrarla.</li>
+            </ul>
+            <p><em>git status</em> te muestra en qué parte del cuarto está cada prenda.</p>
+          </article>
+          <article>
+            <h3>¿Por qué es tan importante?</h3>
+            <p>Porque antes de guardar cualquier cambio siempre debes ejecutar <em>git status</em>
+              para saber exactamente qué está pasando. Es el comando que más usarás en tu día a día,
+              incluso más que <em>git commit.</em></p>
+          </article>
+        </section>
+        <hr>
+        <section>
+          <h2>3. ¿Qué hace <em>git add</em>?</h2>
+          <p>
+            <em>git add</em> es el comando que le dice a <em>Git:</em> <br>
+            <em><small>"Quiero que prepares estos cambios para guardarlos."</small></em>
+          </p>
+          <p>Toma tus archivos del estado <strong>Untracked</strong> o <strong>Modified</strong> y
+            los mueve al estado <strong>Staged.</strong> Es decir, los mete a la maleta listos para
+            el <em>commit.</em>
+          </p>
+          <article>
+            <h3>¿Por qué existe este paso intermedio?</h3>
+            <p>Esta es la pregunta clave. <em>¿Por qué no guardar directamente sin pasar por el
+                stage?</em></p>
+            <p>Imagina que trabajaste todo el día y modificaste 5 archivos, pero solo 3 de ellos
+              están realmente listos y los otros 2 aún estan incompletos. <em>git add</em> te
+              permite elegir exactamente <em>qué entra en el próximo guardado</em> y qué no, dándote
+              control total sobre tu historial.</p>
+          </article>
+          <article>
+            <h3>Sus tres formas de uso</h3>
+            <article>
+              <h4>Agregar un archivo específico:</h4>
+              <div class="box-git">
+                <p><span class="comando">git add</span> index.html</p>
+              </div>
+              <p>Solo prepara ese archivo en particular.</p>
+            </article>
+            <article>
+              <h4>Agregar varios archivos a la vez:</h4>
+              <div class="box-git">
+                <p><span class="comando">git add</span> index.html style.css</p>
+              </div>
+              <p>Prepara exactamente los archivos que mencionas.</p>
+            </article>
+            <article>
+              <h4>Agrega todos los cambios de una vez:</h4>
+              <div class="box-git">
+                <p><span class="comando">git add .</span></p>
+              </div>
+              <p>El punto significa <em>"todo lo que cambio en esta carpeta". </em>Es el más usado
+                en el día a día.</p>
+            </article>
+          </article>
+          <article>
+            <h3>El flujo hasta ahora</h3>
+            <div class="image">
+              <img src="./assets/image/git-add.png" alt="El flujo del comando git add">
+            </div>
+            <p>Cada paso tiene su propósito: primero trabajas, luego seleccionas con <em>git
+                add</em>, luego guardas con <em>git commit</em>
+            </p>
+          </article>
+        </section>
+        <hr>
+        <section>
+          <h2>4. ¿Qué hace <em>git commit</em>?</h2>
+          <p>
+            <em>git commit</em> es el comando que <strong>guarda oficialmente</strong> los cambios
+            en el historial de <em>Git</em>. Es el momento en que le dice a <em>Git:</em> <br>
+            <em><small>"Toma todo lo que está en el stage y guárdalo para siempre en el
+                historial."</small></em>
+          </p>
+          <p>Si <em>git add</em> fue meter la ropa a la maleta, <em>git commit</em> es
+            <strong>cerrar y etiquetar la maleta</strong> con una descripción de lo que hay dentro.
+          </p>
+          <article>
+            <h3>¿Qué es exactamente un <em>commit</em>?</h3>
+            <p>Un <em>commit</em> es un <strong>punto de guardado en el tiempo.</strong> Cada
+              <em>commit</em> contiene:</p>
+            <ul>
+              <li>Los cambios que hiciste</li>
+              <li>Quién lo hizo (tu nombre y correo que configuraste)</li>
+              <li>Cuándo se hicieron (fecha y hora)</li>
+              <li>Un mensaje que describe qué se hizo</li>
+              <li>Un código único llamado <em>hash</em> que identifica ese <em>commit</em></li>
+            </ul>
+            <p>Piénsalo como una <strong>fotográfica del proyecto</strong> en ese momento exacto.
+              Puedes tener miles de fotos y regresar a cuálquiera de ellas cuando quieras.</p>
+          </article>
+          <article>
+            <h3>¿Por qué el mensaje es tan importante?</h3>
+            <p>El mensaje del <em>commit</em> es lo que hace que el historial sea legible y útil.
+              Cuando revises tu historial en el futuro, o cuando trabajes en equipo, ese mensaje
+              explica <strong>qué cambiaste y por qué.</strong></p>
+            <p>Un buen mensaje es claro y específico:</p>
+            <div class="box-git">
+              <p> "agrega formulario de contacto" <br> "Corrige error en el menú de navegación" <br>
+                "Actualiza colores del header" </p>
+            </div>
+            <p>Siempre tiene que ser un mensaje claro de lo que se hizo, ya que un mal mensaje no
+              ayuda a entender que se modifico.</p>
+          </article>
+          <article>
+            <h3>Su forma de uso</h3>
+            <p>La forma estándar, la que usaras siempre:</p>
+            <div class="box-git">
+              <p><span class="comando">git commit -m</span> "Tu mensaje aquí"</p>
+            </div>
+            <p>La bandera <em>-m</em> significa <strong>message</strong>. Todo lo que escribas entre
+              comillas es el mensaje que quedará grabado en el historial.</p>
+          </article>
+          <article>
+            <h3>El flujo completo hasta ahora</h3>
+            <div class="image">
+              <img src="./assets/image/el-flujo-hasta-el-commit.png"
+                alt="el flujo hasta el comando commit">
+            </div>
+          </article>
+        </section>
+        <hr>
+        <section>
+          <h2>5. ¿Qué hace <em>git push</em>?</h2>
+          <p>
+            <em>git push</em> es el comando que <strong>sube tus commits desde tu computadora a
+              GitHub</strong>. Es el momento en que le dice a <em>Git:</em> <br>
+            <em><small>"Todo lo que guardé localmente, envíalo ahora a GitHub."</small></em>
+          </p>
+          <p>Si hasta ahora todo el trabajo vivía solo en tu computadora. <em>git push</em> es el
+            puente que lo lleva a internet.</p>
+          <article>
+            <h3>¿Por qué existe este paso separado?</h3>
+            <p>Porque <em>Git</em> tiene dos mundos distintos:</p>
+            <ul>
+              <li><strong>Repositorio local</strong> → El que vive en tu computadora. Solo tú lo
+                ves. </li>
+              <li><strong>Repositorio remoto</strong> → El que vive en <em>GitHub</em>. lo puede ver
+                el mundo entero, o tu equipo.</li>
+            </ul>
+            <p>Trabajas localmente a tu ritmo, haces todos los <em>commits</em> que necesitas, y
+              cuando estás listo subes todo de una sola vez con <em>git push</em>.</p>
+          </article>
+          <article>
+            <h3>Su forma de uso</h3>
+            <p>La primera vez que subes un proyecto:</p>
+            <div class="box-git">
+              <p><span class="comando">git </span>push -u origin main</p>
+            </div>
+            <p>Desde la segunda vez en adelante simplemente:</p>
+            <div class="box-git">
+              <p><span class="comando">git </span>push</p>
+            </div>
+          </article>
+          <article>
+            <h3>¿Que significan esas palabras?</h3>
+            <ul>
+              <li><strong>origin</strong> → es el nombre que <em>Git</em> le da por defecto a tu
+                repositorio remoto en <em>GitHub</em>. Es básicamente un apodo para la dirección de
+                <em>GitHUb</em>
+              </li>
+              <li><strong>main</strong> → es la rama principal de tu proyecto, la que configuraste
+                durante la instalación. </li>
+              <li><strong>-u</strong> → solo se usa la primera vez. Le dice a <em>Git "recuerda que
+                  esta rama local está conectada a esa rama remota"</em>, para que las siguientes
+                veces solo necesites escribir <em>git push</em>
+              </li>
+            </ul>
+          </article>
+        </section>
+        <hr>
+        <article>
+          <h3>El flujo completo actualizado</h3>
+          <div class="image">
+            <img src="./assets/image/el-flujo-hasta-el-git-push.png"
+              alt="El flujo completo hasta git push">
+          </div>
+        </article>
+        <article>
+          <h3>Una analogía clara</h3>
+          <ul>
+            <li><strong>git commit</strong> → es como guardar un documento en tu computadora.</li>
+            <li><strong>git push</strong> → es como enviarlo por correo a alguien más.</li>
+          </ul>
+          <p>Puedes guardar mil veces localmente, pero nadie más lo ve hasta que lo envías.</p>
+        </article>
+        <hr>
+        <section>
+          <h2>6. ¿Qué hace <em>git pull</em>?</h2>
+          <p>
+            <em>git pull</em> es el comando opuesto a <em>git push</em>. En lugar de subir tus
+            cambios a <em>GitHub</em>,los baja desde <em>GitHub</em> a tu computadora.Es el momento
+            en que le dice a <em>Git</em>: <br>
+            <em><small>"Trae todos los cambios que están en GitHub y actualiza mi proyecto
+                local."</small></em>
+          </p>
+          <article>
+            <h3>¿Cuándo se usa?</h3>
+            <p>Hay tres situaciones típicas donde necesitas <em>git pull</em></p>
+            <ul>
+              <li><strong>Trabajas en equipo</strong> Tu compañero subió cambios a <em>GitHub</em>.
+                Tú necesitas traer esos cambios a tu computadora para tener la versión más
+                actualizada del proyecto.</li>
+              <li><strong>Trabajas desde varias computadoras</strong> Subiste cambios desde tu PC de
+                escritorio. Al día siguiente abres tu laptop y necesitas traer esos cambios antes de
+                seguir trabajando.</li>
+              <li><strong>Hiciste cambios directamente en <em>GitHub</em></strong> A veces editas un
+                archivo directo en la web de <em>GitHub</em>. <em>git pull</em> trae esos cambios a
+                tu computadora. </li>
+            </ul>
+          </article>
+          <article>
+            <h3>Su forma de uso</h3>
+            <div class="box-git">
+              <p><span class="comando">git</span> pull</p>
+            </div>
+            <p>Así de simple. No necesita parámetros adicionales porque ya configuraste la conexión
+              con <em>-u</em> cuando hiciste el primer <em>git push.</em>
+            </p>
+          </article>
+          <article>
+            <h3>¿Qué hace exactamente por dentro?</h3>
+            <p><em>git pull</em> en realidad hace dos cosas en una sola:</p>
+            <div class="box-git">
+              <p><span class="comando">git pull</span> = git fetch + git merge</p>
+            </div>
+            <ul>
+              <li><strong>git fetch</strong> → descarga los cambios de <em>GitHub</em> pero no lo
+                aplica todavia.</li>
+              <li><strong>git merge</strong> → fusiona esos cambios descargados con tu proyecto
+                local. </li>
+            </ul>
+            <p>NO necesitas ejecutarlo por separado, <em>git pull</em> los hace juntos
+              automáticamente. Lo mencionamos solo para entender qué ocurre por dentro.</p>
+          </article>
+          <article>
+            <h3>El flujo completo de <em>Git</em></h3>
+            <div class="image">
+              <img src="./assets/image/flujo-completo-de-git.png" alt="El flujo completo de Git">
+            </div>
+          </article>
+          <article>
+            <h2>La regla de oro de <em>git pull</em></h2>
+            <p>Siempre ejecuta <em>git pull</em> antes de empezar a trabajar, especialmente si
+              trabajas en equipo. Así te aseguras de tener siempre la versión más actualizada del
+              proyecto y evitas conflictos.</p>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
